@@ -16,7 +16,7 @@ class RolesSeeder extends Seeder
     {
         \App\Models\Roles::factory(1)->create(
             [
-                'role' => 'administrator',
+                'role' => 'employer',
             ]
         );
     }
