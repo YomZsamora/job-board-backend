@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Samora Yommie',
                 'email' => 'samora.y@adzumi.co.ke',
                 'email_verified_at' => null,
+                'role_id' => 1,
             ]
         );
     }

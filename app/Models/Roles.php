@@ -9,7 +9,7 @@ class Roles extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'roles_id';
+    protected $primaryKey = 'role_id';
 
     public $timestamps = false;
 }
