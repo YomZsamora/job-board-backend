@@ -17,6 +17,6 @@ use App\Http\Controllers\LoginController;
 
 
 
-Route::middleware('auth:sanctum')->get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth:sanctum')->get('/roles', [LoginController::class, 'index']);
