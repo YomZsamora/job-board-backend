@@ -20,3 +20,4 @@ use App\Http\Controllers\LoginController;
 Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth:sanctum')->get('/roles', [LoginController::class, 'index']);
+

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -19,11 +18,10 @@ class LoginController extends Controller
  
             return "Successful!";
         }
+        return response()->json(["status" => "failed", "message" => "validation_error", "errors" => $request->validate->errors()]);
+    }
 
-        return Hash::make($request->password);
- 
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
+    public function index() {
+        return response()->json(\App\Models\Roles::all());
     }
 }
