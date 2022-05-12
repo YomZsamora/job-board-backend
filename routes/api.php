@@ -21,3 +21,8 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::middleware('auth:sanctum')->get('/roles', [LoginController::class, 'index']);
 
+Route::post('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken($request->token_name);
+ 
+    return ['token' => $token->plainTextToken];
+});
