@@ -22,6 +22,7 @@ class LoginController extends Controller
                     'user' => $user
                 ]);
             }
+            return response()->json(['status' => 422, 'errorTitle' => 'Password Error!', 'errorMessage' => 'Password entered is incorrect!' ]);
         }
         return response()->json(['status' => 422, 'errorTitle' => 'Email not found!', 'errorMessage' => 'Email does not exist in our records!' ]);
     }
