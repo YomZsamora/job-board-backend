@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PasswordResetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\LoginController;
 
 
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/reset_password', [PasswordResetController::class, 'userResetPassword']);
 
 Route::middleware('auth:sanctum')->get('/roles', [LoginController::class, 'index']);
 
