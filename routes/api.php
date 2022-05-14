@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\SignOutController;
+use App\Http\Controllers\Auth\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,9 @@ use App\Http\Controllers\Auth\PasswordResetController;
 
 
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/signout', [SignOutController::class, 'logout']);
 Route::post('/reset_password', [PasswordResetController::class, 'userResetPassword']);
 
-Route::middleware('auth:sanctum')->get('/roles', [LoginController::class, 'index']);
+
+Route::get('/get_user', [UserController::class, 'getUserDetails']);
 
