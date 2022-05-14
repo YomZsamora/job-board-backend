@@ -13,12 +13,15 @@ class LoginController extends Controller
 
         if(User::where('email', $request->email)->first()){
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-                $request->session()->regenerate();
                 $user = User::where('email', $request->email)->first();
+                $request->session()->regenerate();
+                $request->session()->put('key',$user->remember_token);
+                $sessionKey = $request->session()->get('key');
                 $token = $user->createToken('auth_token')->plainTextToken;
                 return response()->json([
                     'access_token' => $token,
                     'token_type' => 'Bearer',
+                    'session_key' => $sessionKey,
                     'user' => $user
                 ]);
             }
@@ -27,8 +30,9 @@ class LoginController extends Controller
         return response()->json(['status' => 422, 'errorTitle' => 'Email not found!', 'errorMessage' => 'Email does not exist in our records!' ]);
     }
 
-    public function index() {
-        return response()->json(\App\Models\Roles::all());
-    }
+    // public function getSessionKey(Request $request) {
+    //     $sessionKey = session('key');
+    //     return response()->json(['status' => 200, 'sessionKey' => $sessionKey ]);
+    // }
 }
 
