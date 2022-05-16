@@ -22,7 +22,7 @@ class LoginController extends Controller
                     'access_token' => $token,
                     'token_type' => 'Bearer',
                     'session_key' => $sessionKey,
-                    'user' => $user
+                    'user_data' => $user
                 ]);
             }
             return response()->json(['status' => 422, 'errorTitle' => 'Password Error!', 'errorMessage' => 'Password entered is incorrect!' ]);
