@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cohorts extends Model
+class Students extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'cohort_id';
-
-    public $timestamps = false;
-
     protected $fillable = [
-        'cohort',
-        'start_date',
-        'end_date'
+        'first_name',
+        'last_name',
+        'email',
+        'track',
+        'cohort_id',
+        'role_id',
+        'password'
     ];
 }
