@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RolesSeeder extends Seeder
+class CohortsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,11 @@ class RolesSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Roles::factory(1)->create(
+        \App\Models\Cohorts::factory(1)->create(
             [
-                'role' => 'applicant',
+                'cohort' => 'MC52/53',
+                'start_date' => '2021-11-22',
+                'end_date' => '2022-5-20',
             ]
         );
     }
