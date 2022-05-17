@@ -13,21 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('track');
-            $table->foreignId('cohort')->constrained('cohorts');
-            $table->foreignId('role_id')->constrained('roles');
-            $table->string('password');
+        Schema::table('students', function (Blueprint $table) {
+            $table->renameColumn('cohort_id', 'cohort');
             $table->string('api_token', 80)->unique()
                         ->nullable()
                         ->default(null)
                         ->after('password');
-            $table->rememberToken();
-            $table->timestamps();
         });
     }
 
@@ -38,6 +29,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::table('students', function (Blueprint $table) {
+            $table->renameColumn('cohort', 'cohort_id');
+            $table->string('api_token', 80)->unique()
+                        ->nullable()
+                        ->default(null)
+                        ->after('password');
+        });
     }
 };

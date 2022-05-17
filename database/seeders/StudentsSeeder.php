@@ -20,7 +20,7 @@ class StudentsSeeder extends Seeder
                 'last_name' => 'Yommie',
                 'email' => 'samora.y@adzumi.co.ke',
                 'track' => 'Android',
-                'cohort_id' => 4,
+                'cohort' => 4,
                 'role_id' => 4,
             ]
         );

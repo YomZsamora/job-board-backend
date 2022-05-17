@@ -23,6 +23,7 @@ class StudentsFactory extends Factory
             'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password'), 
+            'api_token' => Str::random(80),
             'remember_token' => Str::random(10),
         ];
     }
