@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Test extends Model
+class Cohorts extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'cohort_id';
+
+    public $timestamps = false;
+
     protected $fillable = [
-        'name',
-        'email',
+        'cohort',
+        'start_date',
+        'end_date'
     ];
 }

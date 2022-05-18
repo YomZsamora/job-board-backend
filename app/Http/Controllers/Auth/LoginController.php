@@ -25,14 +25,9 @@ class LoginController extends Controller
                     'user_data' => $user
                 ]);
             }
-            return response()->json(['status' => 422, 'errorTitle' => 'Password Error!', 'errorMessage' => 'Password entered is incorrect!' ]);
+            return response()->json(['status' => 422, 'errorMessage' => 'Password entered is incorrect!' ]);
         }
-        return response()->json(['status' => 422, 'errorTitle' => 'Email not found!', 'errorMessage' => 'Email does not exist in our records!' ]);
+        return response()->json(['status' => 422, 'errorMessage' => 'Email does not exist in our records!' ]);
     }
-
-    // public function getSessionKey(Request $request) {
-    //     $sessionKey = session('key');
-    //     return response()->json(['status' => 200, 'sessionKey' => $sessionKey ]);
-    // }
 }
 
