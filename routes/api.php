@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\FileUploads\StudentsUploadController;
+use App\Http\Controllers\Cohorts\CohortsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,25 @@ use App\Http\Controllers\FileUploads\StudentsUploadController;
 */
 
 
-
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/reset_password', [PasswordResetController::class, 'userResetPassword']);
 Route::get('/signout', [SignOutController::class, 'logout']);
 
 
+/*
+|--------------------------------------------------------------------------
+| File Uploads Routes
+|--------------------------------------------------------------------------
+*/
 Route::post('/student_bulk_upload', [StudentsUploadController::class, 'studentBulkUpload']);
 
 
-
+Route::get('/get_cohorts', [CohortsController::class, 'getCohorts']);
+Route::get('/get_cohort_graduates/{id}', [CohortsController::class, 'getCohortGraduates']);
 Route::get('/get_user', [UserController::class, 'getUserDetails']);
 
