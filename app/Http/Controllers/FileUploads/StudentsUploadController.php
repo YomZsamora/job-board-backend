@@ -41,6 +41,7 @@ class StudentsUploadController extends Controller
                                     "email" => $data['2'],
                                     "cohort" => $cohortExists->id,
                                     "track" => $data['4'],
+                                    "employment_status" => 'unemployed',
                                     "role_id" => 4,
                                     'password' => Hash::make('Grad@moringa1234!'), 
                                 ]);  

@@ -14,6 +14,7 @@ class Students extends Model
         'last_name',
         'email',
         'track',
+        'employment_status',
         'cohort',
         'role_id',
         'password'
