@@ -20,6 +20,7 @@ class UploadProcessingController extends Controller
 
     public function validateCsvHeaders($fileName) {
         $report = fopen(base_path("storage/app/public/uploads/" . $fileName), "r");
+        // Checking for validation for csv file.
         $requiredHeaders = array('First Name', 'Last Name', 'Email', 'Cohort', 'Track');
         $headers = fgetcsv($report, 0, ",");
         if($headers === $requiredHeaders) {
