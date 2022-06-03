@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(1)->create(
             [
                 'name' => 'Samora Yommie',
-                'email' => 'samora.y@adzumi.co.ke',
+                'email' => 'samora.yommie@moringaschool.com',
                 'email_verified_at' => null,
                 'role_id' => 1,
             ]
