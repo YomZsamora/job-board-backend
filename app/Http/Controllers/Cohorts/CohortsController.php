@@ -13,10 +13,4 @@ class CohortsController extends Controller
         $cohorts = Cohorts::orderBy('end_date', 'DESC')->get();
         return response()->json(['status' => 200, 'cohorts' => $cohorts]);
     }
-
-    // Fetch Graduates for a Specific Cohort Provided the ID
-    function getCohortGraduates($id){
-        $graduates = Students::where('cohort', $id)->get();
-        return response()->json(['status' => 200, 'graduates' => $graduates, 'noOfGraduates' => $graduates->count()]);
-    }
 }
