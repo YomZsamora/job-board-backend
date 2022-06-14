@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cohorts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Services\DatesController;
+use App\Http\Controllers\Courses\CourseTypeController;
 
 class CohortsController extends Controller
 {
@@ -13,16 +14,20 @@ class CohortsController extends Controller
     function addNewCohort(Request $request) {
         
         $dateFormat = new DatesController;
+        $courseType = new CourseTypeController;
 
         $courseOfferingName = $request->courseOfferingname.$request->courseOfferingID; // Concatenate submitted Course Name and Course ID
+        $courseCurriculumAndType = $courseType->verifyCourseCurriculumAndType($courseOfferingName);
         $cohortStartDate = $dateFormat->convertDateBeforePosting($request->cohortStartDate);
         $cohortGraduationDate = $dateFormat->convertDateBeforePosting($request->cohortGraduationDate);
 
-        $cohort = Cohorts::firstOrCreate([
-            'cohort' => $courseOfferingName,
-            'start_date' => $cohortStartDate,
-            'end_date' => $cohortGraduationDate,
-        ]);
+        return response()->json(['status' => 200, 'cohortType' => $courseCurriculumAndType]);
+
+        // $cohort = Cohorts::firstOrCreate([
+        //     'cohort' => $courseOfferingName,
+        //     'start_date' => $cohortStartDate,
+        //     'end_date' => $cohortGraduationDate,
+        // ]);
         // if($cohort) {
         //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Found!']);
         // } else {
