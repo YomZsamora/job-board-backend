@@ -21,17 +21,18 @@ class CohortsController extends Controller
         $cohortStartDate = $dateFormat->convertDateBeforePosting($request->cohortStartDate);
         $cohortGraduationDate = $dateFormat->convertDateBeforePosting($request->cohortGraduationDate);
 
-        return response()->json(['status' => 200, 'cohortType' => $courseCurriculumAndType]);
+        $cohort = Cohorts::firstOrCreate([
+            'cohort' => $courseOfferingName,
+            'start_date' => $cohortStartDate,
+            'end_date' => $cohortGraduationDate,
+            'curriculum' => $courseCurriculumAndType->curriculum,
+            'course' => $courseCurriculumAndType->type
+        ]);
 
-        // $cohort = Cohorts::firstOrCreate([
-        //     'cohort' => $courseOfferingName,
-        //     'start_date' => $cohortStartDate,
-        //     'end_date' => $cohortGraduationDate,
-        // ]);
         // if($cohort) {
         //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Found!']);
         // } else {
-        //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Not Found!']);
+        //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Not Found but Added!']);
         // }
     }
     
