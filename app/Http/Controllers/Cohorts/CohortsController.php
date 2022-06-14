@@ -10,7 +10,10 @@ class CohortsController extends Controller
 {
     // Post New Cohort
     function addNewCohort(Request $request) {
-        return response()->json(['status' => 200, 'cohorts' => $request->cohortGraduationDate]);
+        $courseOfferingName = $request->courseOfferingname.$request->courseOfferingID; // Concatenate submitted Course Name and Course ID
+        $time = strtotime($request->cohortStartDate);
+        $newformat = date('Y-m-d',$time);
+        return response()->json(['status' => 200, 'cohorts' => $newformat]);
     }
     
     
