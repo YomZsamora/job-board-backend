@@ -40,6 +40,7 @@ Route::get('/get_user', [UserController::class, 'getUserDetails']);
 Route::post('/student_bulk_upload', [StudentsUploadController::class, 'studentBulkUpload']);
 
 
+Route::post('/add_new_cohort', [CohortsController::class, 'addNewCohort']);
 Route::get('/get_cohorts', [CohortsController::class, 'getCohorts']);
 
 
