@@ -16,6 +16,8 @@ class Cohorts extends Model
     protected $fillable = [
         'cohort',
         'start_date',
-        'end_date'
+        'end_date',
+        'curriculum',
+        'course'
     ];
 }

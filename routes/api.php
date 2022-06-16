@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\SignOutController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\FileUploads\StudentsUploadController;
 use App\Http\Controllers\Cohorts\CohortsController;
+use App\Http\Controllers\Graduates\GraduatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use App\Http\Controllers\Cohorts\CohortsController;
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/reset_password', [PasswordResetController::class, 'userResetPassword']);
 Route::get('/signout', [SignOutController::class, 'logout']);
-
+Route::get('/get_user', [UserController::class, 'getUserDetails']);
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,9 @@ Route::get('/signout', [SignOutController::class, 'logout']);
 Route::post('/student_bulk_upload', [StudentsUploadController::class, 'studentBulkUpload']);
 
 
+Route::post('/add_new_cohort', [CohortsController::class, 'addNewCohort']);
 Route::get('/get_cohorts', [CohortsController::class, 'getCohorts']);
-Route::get('/get_cohort_graduates/{id}', [CohortsController::class, 'getCohortGraduates']);
-Route::get('/get_user', [UserController::class, 'getUserDetails']);
+
+
+Route::get('/get_cohort_graduates/{id}', [GraduatesController::class, 'getCohortGraduates']);
 
