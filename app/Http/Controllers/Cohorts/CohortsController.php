@@ -21,19 +21,20 @@ class CohortsController extends Controller
         $cohortStartDate = $dateFormat->convertDateBeforePosting($request->cohortStartDate);
         $cohortGraduationDate = $dateFormat->convertDateBeforePosting($request->cohortGraduationDate);
 
-        $cohort = Cohorts::firstOrCreate([
-            'cohort' => $courseOfferingName,
-            'start_date' => $cohortStartDate,
-            'end_date' => $cohortGraduationDate,
-            'curriculum' => $courseCurriculumAndType->curriculum,
-            'course' => $courseCurriculumAndType->type
-        ]);
+        $foundCohort = Cohorts::firstWhere('cohort', $courseOfferingName);
 
-        // if($cohort) {
-        //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Found!']);
-        // } else {
-        //     return response()->json(['status' => 200, 'cohorts' => 'Cohort Not Found but Added!']);
-        // }
+        if($foundCohort) {
+            return response()->json(['status' => 422, 'cohort' => $foundCohort->cohort, 'message' => "Failed Adding Cohort! ".$foundCohort->cohort." Already Exists"]);
+        } else {
+            $cohort = Cohorts::Create([
+                'cohort' => $courseOfferingName,
+                'start_date' => $cohortStartDate,
+                'end_date' => $cohortGraduationDate,
+                'curriculum' => $courseCurriculumAndType->curriculum,
+                'course' => $courseCurriculumAndType->type
+            ]);
+            return response()->json(['status' => 200, 'cohort' => $cohort, 'message' => 'Cohort DSF-PT3 has been Created Successfully!']);
+        }
     }
     
     
